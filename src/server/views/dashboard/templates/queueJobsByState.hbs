@@ -102,6 +102,7 @@
                   {{else}}
                     {{#eq ../state 'active'}}
                       <span class="label label-default">Duration: {{moment (minus (moment "x") this.processedOn) "HH:mm:ss.SSS"}}</span>
+                      <span class="label label-default">Progress: {{this.progress}}%</span>
                     {{/eq}}
                   {{/if}}
                 {{/if}}
