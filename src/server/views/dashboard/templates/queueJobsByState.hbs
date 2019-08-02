@@ -95,7 +95,16 @@
 
             <a role="button" data-toggle="collapse" href="#collapse{{hashIdAttr this.id}}">
               <h4 class="header-collapse">
-                <span class="label label-default">{{ this.id }}</span>
+                <span class="label label-default">{{#if this.name}}{{ this.name }}{{else}}{{ this.id }}{{/if}}</span>
+                {{#if this.processedOn}}
+                  {{#if this.finishedOn}}
+                    <span class="label label-default">Duration: {{moment (minus this.finishedOn this.processedOn) "HH:mm:ss.SSS"}}</span>
+                  {{else}}
+                    {{#eq ../state 'active'}}
+                      <span class="label label-default">Duration: {{moment (minus (moment "x") this.processedOn) "HH:mm:ss.SSS"}}</span>
+                    {{/eq}}
+                  {{/if}}
+                {{/if}}
                 {{#if this.data.name}}
                   <span style="margin-left: 8px">{{ this.data.name }}</span>
                 {{else if this.name}}

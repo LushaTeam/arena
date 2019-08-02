@@ -1,5 +1,5 @@
 {{#unless displayJobInline}}
-  <h3>{{ this.id }}</h3>
+  <h3>{{#if this.name}}{{ this.name }}{{else}}{{ this.id }}{{/if}}</h3>
 {{/unless}}
 
 <h5>Actions</h5>
@@ -37,11 +37,25 @@
       {{length this.options.stacktraces}}
     {{/if}}
   </div>
+
+  {{#if this.processedOn}}
+    <div class="col-sm-3">
+      {{#if this.finishedOn}}
+        <h5>Duration</h5>
+        {{moment (minus this.finishedOn this.processedOn) "HH:mm:ss.SSS"}}</span>
+      {{else}}
+        {{#eq jobState 'active'}}
+          <h5>Duration</h5>
+          {{moment (minus (moment "x") this.processedOn) "HH:mm:ss.SSS"}}
+        {{/eq}}
+      {{/if}}
+    </div>
+  {{/if}}
 </div>
 <div class="row">
   <div class="col-sm-4">
     <h5>Permalinks</h5>
-    <a href="{{ basePath }}/{{ encodeURI queueHost }}/{{ encodeURI queueName }}/{{ this.id }}" class="btn btn-info">Job {{ this.id }}</a>
+    <a href="{{ basePath }}/{{ encodeURI queueHost }}/{{ encodeURI queueName }}/{{ this.id }}" class="btn btn-info">Job {{#if this.name}}{{ this.name }}{{else}}{{ this.id }}{{/if}}</a>
     <a href="{{ basePath }}/{{ encodeURI queueHost }}/{{ encodeURI queueName }}/{{ this.id }}?json=true" class="btn btn-info">JSON</a>
   </div>
 </div>
