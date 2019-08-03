@@ -5,6 +5,88 @@ $(document).ready(() => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  $('.js-pause-queue').on('click', function(e) {
+    $(this).prop('disabled', true);
+
+    const queueName = $(this).data('queue-name');
+    const queueHost = $(this).data('queue-host');
+
+    const r = window.confirm(`Pause new jobs in queue "${queueHost}/${queueName}"?`);
+    if (r) {
+      $.ajax({
+        method: 'POST',
+        url: `${basePath}/api/queue/${encodeURIComponent(queueHost)}/${encodeURIComponent(queueName)}/pause`,
+      }).done(() => {
+        window.location.reload();
+      }).fail((jqXHR) => {
+        window.alert(`Request failed, check console for error.`);
+        console.error(jqXHR.responseText);
+      });
+    } else {
+      $(this).prop('disabled', false);
+    }
+  });
+
+  $('.js-resume-queue').on('click', function(e) {
+    $(this).prop('disabled', true);
+
+    const queueName = $(this).data('queue-name');
+    const queueHost = $(this).data('queue-host');
+
+    const r = window.confirm(`Resume jobs in queue "${queueHost}/${queueName}"?`);
+    if (r) {
+      $.ajax({
+        method: 'POST',
+        url: `${basePath}/api/queue/${encodeURIComponent(queueHost)}/${encodeURIComponent(queueName)}/resume`,
+      }).done(() => {
+        window.location.reload();
+      }).fail((jqXHR) => {
+        window.alert(`Request failed, check console for error.`);
+        console.error(jqXHR.responseText);
+      });
+    } else {
+      $(this).prop('disabled', false);
+    }
+  });
+
+  $('.js-pause-queues').on('click', function(e) {
+    $(this).prop('disabled', true);
+
+    const r = window.confirm(`Pause new jobs in all queues?`);
+    if (r) {
+      $.ajax({
+        method: 'POST',
+        url: `${basePath}/api/queues/pause`,
+      }).done(() => {
+        $(this).prop('disabled', false);
+      }).fail((jqXHR) => {
+        window.alert(`Request failed, check console for error.`);
+        console.error(jqXHR.responseText);
+      });
+    } else {
+      $(this).prop('disabled', false);
+    }
+  });
+
+  $('.js-resume-queues').on('click', function(e) {
+    $(this).prop('disabled', true);
+
+    const r = window.confirm(`Resume jobs in all queues?`);
+    if (r) {
+      $.ajax({
+        method: 'POST',
+        url: `${basePath}/api/queues/resume`,
+      }).done(() => {
+        $(this).prop('disabled', false);
+      }).fail((jqXHR) => {
+        window.alert(`Request failed, check console for error.`);
+        console.error(jqXHR.responseText);
+      });
+    } else {
+      $(this).prop('disabled', false);
+    }
+  });
+
   // Set up individual "retry job" handler
   $('.js-retry-job').on('click', function(e) {
     e.preventDefault();
