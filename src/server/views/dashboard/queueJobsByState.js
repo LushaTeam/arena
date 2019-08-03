@@ -46,7 +46,7 @@ async function _json(req, res) {
   const filename = `${queueName}-${state}-dump.json`;
 
   res.setHeader('Content-disposition', `attachment; filename=${filename}`);
-  res.setHeader('Content-type', 'application/json');
+  res.setHeader('Content-type', 'application/octet-stream');
   res.write(JSON.stringify(jobs, null, 2), () => res.end());
 }
 
