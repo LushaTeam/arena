@@ -28,9 +28,15 @@
           {{#each jobCounts}}
           <li class="list-group-item">
             <span class="badge">{{ this }}</span>
-            <a href="{{ ../basePath }}/{{ encodeURI ../queueHost }}/{{ encodeURI ../queueName }}/{{ @key }}">
-              <span class="text-capitalize">{{ @key }}</span>
-            </a>
+            {{#eq @key 'paused'}}
+              <a href="{{ ../basePath }}/{{ encodeURI ../queueHost }}/{{ encodeURI ../queueName }}/waiting">
+                <span class="text-capitalize">{{ @key }}</span>
+              </a>
+            {{else}}
+              <a href="{{ ../basePath }}/{{ encodeURI ../queueHost }}/{{ encodeURI ../queueName }}/{{ @key }}">
+                <span class="text-capitalize">{{ @key }}</span>
+              </a>
+            {{/eq}}
           </li>
           {{/each}}
         </ul>
