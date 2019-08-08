@@ -95,7 +95,11 @@
 
             <a role="button" data-toggle="collapse" href="#collapse{{hashIdAttr this.id}}">
               <h4 class="header-collapse">
-                <span class="label label-default">{{moment this.timestamp "YYYY-MM-DD HH:mm:ss"}}</span>
+                {{#if this.processedOn}}
+                  <span class="label label-default">{{moment this.processedOn "YYYY-MM-DD HH:mm:ss"}}</span>
+                {{else}}
+                  <span class="label label-default">{{moment this.timestamp "YYYY-MM-DD HH:mm:ss"}}</span>
+                {{/if}}
                 {{#if this.processedOn}}
                   {{#if this.finishedOn}}
                     <span class="label label-default">Duration: {{moment (minus this.finishedOn this.processedOn) "HH:mm:ss.SSS"}}</span>
