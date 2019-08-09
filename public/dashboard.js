@@ -1,9 +1,42 @@
+let refreshTimer = null;
+let refreshInterval = null;
+
 $(document).ready(() => {
   const basePath = $('#basePath').val();
 
   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  function setRefreshInterval(value) {
+    refreshInterval = value;
+
+    refreshTimer = setInterval(() => {
+      window.location.reload();
+    }, value * 1000);
+  }
+
+  const savedRefreshInterval = Number(localStorage.getItem('arena:refreshInterval'));
+  if (savedRefreshInterval) {
+    $('#refresh').val(String(savedRefreshInterval));
+
+    if (savedRefreshInterval)
+      setRefreshInterval(savedRefreshInterval);
+  }
+
+  $('#refresh').on('change', function(e) {
+    if (refreshTimer)
+      clearInterval(refreshTimer);
+
+    const refreshInterval = Number($('#refresh').val());
+
+    localStorage.setItem('arena:refreshInterval', String(refreshInterval));
+
+    if (!refreshInterval)
+      return;
+
+    setRefreshInterval(refreshInterval);
+  });
 
   $('.js-pause-queue').on('click', function(e) {
     $(this).prop('disabled', true);

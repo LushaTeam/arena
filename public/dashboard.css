@@ -11,6 +11,10 @@ a {
   text-decoration: none !important;
 }
 
+.navbar .navbar-brand {
+  padding-top: 20px;
+}
+
 #queueList th {
   font-size: 12px;
 }

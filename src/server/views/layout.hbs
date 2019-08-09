@@ -40,6 +40,24 @@
           </button>
           <a class="navbar-brand" href="{{ basePath }}/">Arena</a>
         </div>
+
+        <div class="navbar-header navbar-right">
+          <form class="form-inline navbar-text">
+            <label for="refresh">Refresh Interval {{ refreshInterval }}</label>
+            <select class="form-control" id="refresh">
+              <option value="0">Never</option>
+              <option value="5">5 seconds</option>
+              <option value="10">10 seconds</option>
+              <option value="30">30 seconds</option>
+              <option value="60">1 minute</option>
+              <option value="300">5 minute</option>
+              <option value="600">10 minute</option>
+              <option value="900">15 minute</option>
+              <option value="1800">30 minute</option>
+              <option value="3600">1 hour</option>
+            </select>
+          </form>
+        </div>
       </div>
     </nav>
 
