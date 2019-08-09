@@ -17,12 +17,24 @@
     <thead>
       <th>Host</th>
       <th>Name</th>
+      <th>Active</th>
+      <th>Waiting</th>
+      <th>Completed - Last Hour</th>
+      <th>Completed - Last 24 Hours</th>
+      <th>Failed - Last Hour</th>
+      <th>Failed - Last 24 Hours</th>
     </thead>
     <tbody>
       {{#each queues}}
         <tr>
           <td>{{ this.hostId }}</td>
           <td><a href="{{ ../basePath }}/{{ encodeURI this.hostId }}/{{ encodeURI this.name }}">{{ this.name }}</a></td>
+          <td>{{ this.activeCount }}</td>
+          <td>{{ this.waitingCount }}</td>
+          <td>{{ this.completedLastHourCount }}</td>
+          <td>{{ this.completedLastDayCount }}</td>
+          <td>{{ this.failedLastHourCount }}</td>
+          <td>{{ this.failedLastDayCount }}</td>
         </tr>
       {{/each}}
     </tbody>
