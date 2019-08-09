@@ -98,6 +98,13 @@ async function _html(req, res) {
     jobs = await queue[`get${_.capitalize(state)}`](startId, endId);
   }
 
+  for (const job of jobs) {
+    if (job.finishedOn)
+      job.duration = job.finishedOn - job.processedOn;
+    else if (state === 'active')
+      job.duration = Date.now() - job.processedOn;
+  }
+
   let pages = _.range(page - 6, page + 7)
     .filter((page) => page >= 1);
   while (pages.length < 12) {

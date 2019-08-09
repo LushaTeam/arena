@@ -38,17 +38,10 @@
     {{/if}}
   </div>
 
-  {{#if this.processedOn}}
+  {{#if this.duration}}
     <div class="col-sm-3">
-      {{#if this.finishedOn}}
-        <h5>Duration</h5>
-        {{moment (minus this.finishedOn this.processedOn) "HH:mm:ss.SSS"}}</span>
-      {{else}}
-        {{#eq jobState 'active'}}
-          <h5>Duration</h5>
-          {{moment (minus (moment (moment) "x") this.processedOn) "HH:mm:ss.SSS"}}
-        {{/eq}}
-      {{/if}}
+      <h5>Duration</h5>
+      {{moment this.duration "HH:mm:ss.SSS"}}
     </div>
   {{/if}}
 </div>

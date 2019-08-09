@@ -100,16 +100,12 @@
                 {{else}}
                   <span class="label label-default">{{moment this.timestamp "YYYY-MM-DD HH:mm:ss"}}</span>
                 {{/if}}
-                {{#if this.processedOn}}
-                  {{#if this.finishedOn}}
-                    <span class="label label-default">Duration: {{moment (minus this.finishedOn this.processedOn) "HH:mm:ss.SSS"}}</span>
-                  {{else}}
-                    {{#eq ../state 'active'}}
-                      <span class="label label-default">Duration: {{moment (minus (moment (moment) "x") this.processedOn) "HH:mm:ss.SSS"}}</span>
-                      <span class="label label-default">Progress: {{this.progress}}%</span>
-                    {{/eq}}
-                  {{/if}}
+                {{#if this.duration}}
+                  <span class="label label-default">Duration: {{moment this.duration "HH:mm:ss.SSS"}}</span>
                 {{/if}}
+                {{#eq ../state 'active'}}
+                  <span class="label label-default">Progress: {{this.progress}}%</span>
+                {{/eq}}
                 {{#if this.data.name}}
                   <span style="margin-left: 8px">{{ this.data.name }}</span>
                 {{else if this.name}}

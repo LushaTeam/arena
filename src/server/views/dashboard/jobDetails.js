@@ -25,6 +25,11 @@ async function handler(req, res) {
     jobState = await job.getState();
   }
 
+  if (job.finishedOn)
+    job.duration = job.finishedOn - job.processedOn;
+  else if (jobState === 'active')
+    job.duration = Date.now() - job.processedOn;
+
   return res.render('dashboard/templates/jobDetails', {
     basePath,
     queueName,
