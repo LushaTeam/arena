@@ -1,15 +1,13 @@
-<h2>
-  Queue <code>{{ queueHost }}/{{ queueName }}</code>
+<div class="pull-right top-right-buttons">
+  <button class="btn btn-danger js-pause-queue" data-queue-host="{{ queueHost }}" data-queue-name="{{ queueName }}">
+    Pause
+  </button>
+  <button class="btn btn-primary js-resume-queue" data-queue-host="{{ queueHost }}" data-queue-name="{{ queueName }}">
+    Resume
+  </button>
+</div>
 
-  <div class="pull-right">
-    <button class="btn btn-danger js-pause-queue" data-queue-host="{{ queueHost }}" data-queue-name="{{ queueName }}">
-      Pause
-    </button>
-    <button class="btn btn-primary js-resume-queue" data-queue-host="{{ queueHost }}" data-queue-name="{{ queueName }}">
-      Resume
-    </button>
-  </div>
-</h2>
+<h2>Queue <code>{{ queueHost }}/{{ queueName }}</code></h2>
 
 <div class="row">
   <div class="col-sm-6">

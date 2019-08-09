@@ -2,21 +2,50 @@
  * Base structure
  */
 
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 50px;
-}
-
 a {
   text-decoration: none !important;
+}
+
+.queue-list-scrollbar {
+  height: calc(100% - 160px);
+  overflow: auto;
+}
+
+.queue-list-scrollbar th {
+  position: sticky;
+  top: 0;
+  background: #d9edf7;
+}
+
+.queue-list-scrollbar th.bg-success {
+  background: #dff0d8;
+}
+
+.queue-list-scrollbar th.bg-warning {
+  background: #fcf8e3;
+}
+
+.queue-list-scrollbar th.bg-danger {
+  background: #f2dede;
+}
+
+.queue-list-scrollbar td.bg-success,
+.queue-list-scrollbar td.bg-warning,
+.queue-list-scrollbar td.bg-danger
+{
+  font-weight: bold;
 }
 
 .navbar .navbar-brand {
   padding-top: 20px;
 }
 
-#queueList th {
-  font-size: 12px;
+.top-right-buttons {
+  padding-top: 12px;
+}
+
+#queueList th, #queueList td {
+  font-size: 14px;
 }
 
 /*

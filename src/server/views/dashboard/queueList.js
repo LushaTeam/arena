@@ -5,6 +5,7 @@ async function handler(req, res) {
   const now = Date.now();
   const yesterday = now - (24 * 60 * 60 * 1000);
   const hourAgo = now - (60 * 60 * 1000);
+  let singleHost = true;
   let active = 0;
   let waiting = 0;
   let completedLastHourCount = 0;
@@ -16,6 +17,13 @@ async function handler(req, res) {
   for (const q of queues) {
     const queue = await Queues.get(q.name, q.hostId);
     if (!queue) return res.status(404).send({ error: 'queue not found' });
+
+    if (singleHost) {
+      if (singleHost === true)
+        singleHost = q.hostId;
+      else if (singleHost !== q.hostId)
+        singleHost = false;
+    }
 
     q.activeCount = await queue.getActiveCount();
     active += q.activeCount;
@@ -56,7 +64,17 @@ async function handler(req, res) {
     }
   }
 
-  return res.render('dashboard/templates/queueList', { basePath, queues, active, waiting, completedLastHourCount, completedLastDayCount, failedLastHourCount, failedLastDayCount });
+  return res.render('dashboard/templates/queueList', {
+    basePath,
+    queues,
+    showHostColumn: !singleHost,
+    active,
+    waiting,
+    completedLastHourCount,
+    completedLastDayCount,
+    failedLastHourCount,
+    failedLastDayCount
+  });
 }
 
 module.exports = handler;
