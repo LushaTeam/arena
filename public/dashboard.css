@@ -11,6 +11,10 @@ a {
   text-decoration: none !important;
 }
 
+#queueList th {
+  font-size: 12px;
+}
+
 /*
  * Global add-ons
  */

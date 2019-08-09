@@ -17,12 +17,12 @@
     <thead>
       <th>Host</th>
       <th>Name</th>
-      <th>Active</th>
-      <th>Waiting</th>
-      <th>Completed - Last Hour</th>
-      <th>Completed - Last 24 Hours</th>
-      <th>Failed - Last Hour</th>
-      <th>Failed - Last 24 Hours</th>
+      <th>Active ({{ this.active }})</th>
+      <th>Waiting ({{ this.waiting }})</th>
+      <th>Completed - Last Hour ({{ this.completedLastHourCount }})</th>
+      <th>Completed - Last 24 Hours ({{ this.completedLastDayCount }})</th>
+      <th>Failed - Last Hour ({{ this.failedLastHourCount }})</th>
+      <th>Failed - Last 24 Hours ({{ this.failedLastDayCount }})</th>
     </thead>
     <tbody>
       {{#each queues}}
