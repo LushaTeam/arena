@@ -9,7 +9,15 @@ async function handler(req, res) {
   if (!job) return res.status(404).send({error: 'job not found'});
 
   try {
-    await job.remove();
+    const state = await job.getState();
+
+    if (state === 'active') {
+      await job.discard();
+      await job.moveToFailed({ message: 'Aborted by user' }, true);
+    } else {
+      await job.remove();
+    }
+
     return res.sendStatus(200);
   } catch (e) {
     const body = {
