@@ -107,11 +107,7 @@
                 {{#eq ../state 'active'}}
                   <span class="label label-default">Progress: {{this.progress}}%</span>
                 {{/eq}}
-                {{#if this.data.name}}
-                  <span style="margin-left: 8px">{{ this.data.name }}</span>
-                {{else if this.name}}
-                  <span style="margin-left: 8px">{{ this.name }}</span>
-                {{/if}}
+                <span style="margin-left: 8px">{{ this.displayName }}</span>
               </h4>
             </a>
             <div id="collapse{{hashIdAttr this.id}}" class="collapse">

@@ -126,11 +126,11 @@ $(document).ready(() => {
     $(this).prop('disabled', true);
 
     const jobId = $(this).data('job-id');
-    const jobName = $(this).data('job-name');
+    const jobDisplayName = $(this).data('job-display-name');
     const queueName = $(this).data('queue-name');
     const queueHost = $(this).data('queue-host');
 
-    const r = window.confirm(`Retry job "${jobName || jobId}" in queue "${queueHost}/${queueName}"?`);
+    const r = window.confirm(`Retry job "${jobDisplayName}" in queue "${queueHost}/${queueName}"?`);
     if (r) {
       $.ajax({
         method: 'PATCH',
@@ -152,12 +152,12 @@ $(document).ready(() => {
     $(this).prop('disabled', true);
 
     const jobId = $(this).data('job-id');
-    const jobName = $(this).data('job-name');
+    const jobDisplayName = $(this).data('job-display-name');
     const queueName = $(this).data('queue-name');
     const queueHost = $(this).data('queue-host');
     const jobState = $(this).data('job-state');
 
-    const r = window.confirm(`Remove job "${jobName || jobId}" in queue "${queueHost}/${queueName}"?`);
+    const r = window.confirm(`Remove job "${jobDisplayName}" in queue "${queueHost}/${queueName}"?`);
     if (r) {
       $.ajax({
         method: 'DELETE',

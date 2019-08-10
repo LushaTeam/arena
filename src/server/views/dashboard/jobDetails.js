@@ -25,6 +25,8 @@ async function handler(req, res) {
     jobState = await job.getState();
   }
 
+  job.displayName = job.data.name || job.name || job.id;
+
   if (job.finishedOn)
     job.duration = job.finishedOn - job.processedOn;
   else if (jobState === 'active')
