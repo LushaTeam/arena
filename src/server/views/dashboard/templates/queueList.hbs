@@ -16,12 +16,12 @@
         <th>Host</th>
       {{/if}}
       <th>Name</th>
-      <th class="{{#if this.active }}bg-success{{/if}}">{{ this.active }} Active</th>
-      <th class="{{#if this.waiting }}bg-warning{{/if}}">{{ this.waiting }} Waiting</th>
-      <th>{{ this.completedLastHourCount }} Completed - Last Hour</th>
-      <th>{{ this.completedLastDayCount }} Completed - Last Day</th>
-      <th class="{{#if this.failedLastHourCount }}bg-danger{{/if}}">{{ this.failedLastHourCount }} Failed - Last Hour</th>
-      <th class="{{#if this.failedLastDayCount }}bg-danger{{/if}}">{{ this.failedLastDayCount }} Failed - Last Day</th>
+      <th class="{{#if this.active }}bg-success{{/if}}">{{ toLocaleString this.active }} Active</th>
+      <th class="{{#if this.waiting }}bg-warning{{/if}}">{{ toLocaleString this.waiting }} Waiting</th>
+      <th>{{ toLocaleString this.completedLastHourCount }} Completed - Last Hour</th>
+      <th>{{ toLocaleString this.completedLastDayCount }} Completed - Last Day</th>
+      <th class="{{#if this.failedLastHourCount }}bg-danger{{/if}}">{{ toLocaleString this.failedLastHourCount }} Failed - Last Hour</th>
+      <th class="{{#if this.failedLastDayCount }}bg-danger{{/if}}">{{ toLocaleString this.failedLastDayCount }} Failed - Last Day</th>
     </thead>
     <tbody>
       {{#each queues}}
@@ -30,12 +30,12 @@
             <td>{{ this.hostId }}</td>
           {{/if}}
           <td><a href="{{ ../basePath }}/{{ encodeURI this.hostId }}/{{ encodeURI this.name }}">{{ this.name }}</a></td>
-          <td class="{{#if this.activeCount }}bg-success{{/if}}">{{ this.activeCount }}</td>
-          <td class="{{#if this.waitingCount }}bg-warning{{/if}}">{{ this.waitingCount }}</td>
-          <td>{{ this.completedLastHourCount }}</td>
-          <td>{{ this.completedLastDayCount }}</td>
-          <td class="{{#if this.failedLastHourCount }}bg-danger{{/if}}">{{ this.failedLastHourCount }}</td>
-          <td class="{{#if this.failedLastDayCount }}bg-danger{{/if}}">{{ this.failedLastDayCount }}</td>
+          <td class="{{#if this.activeCount }}bg-success{{/if}}">{{ toLocaleString this.activeCount }}</td>
+          <td class="{{#if this.waitingCount }}bg-warning{{/if}}">{{ toLocaleString this.waitingCount }}</td>
+          <td>{{ toLocaleString this.completedLastHourCount }}</td>
+          <td>{{ toLocaleString this.completedLastDayCount }}</td>
+          <td class="{{#if this.failedLastHourCount }}bg-danger{{/if}}">{{ toLocaleString this.failedLastHourCount }}</td>
+          <td class="{{#if this.failedLastDayCount }}bg-danger{{/if}}">{{ toLocaleString this.failedLastDayCount }}</td>
         </tr>
       {{/each}}
     </tbody>

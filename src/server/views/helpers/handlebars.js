@@ -42,6 +42,10 @@ const helpers = {
 
   hashIdAttr(id) {
     return crypto.createHash('sha256').update(id).digest('hex');
+  },
+
+  toLocaleString(number) {
+    return number.toLocaleString();
   }
 };
 

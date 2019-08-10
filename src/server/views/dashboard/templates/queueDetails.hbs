@@ -25,7 +25,7 @@
         <ul class="list-group">
           {{#each jobCounts}}
           <li class="list-group-item">
-            <span class="badge">{{ this }}</span>
+            <span class="badge">{{ toLocaleString this }}</span>
             {{#eq @key 'paused'}}
               <a href="{{ ../basePath }}/{{ encodeURI ../queueHost }}/{{ encodeURI ../queueName }}/waiting">
                 <span class="text-capitalize">{{ @key }}</span>
