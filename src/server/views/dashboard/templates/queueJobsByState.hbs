@@ -99,7 +99,15 @@
                 {{#if this.processedOn}}
                   <span class="label label-default">{{moment this.processedOn "YYYY-MM-DD HH:mm:ss"}}</span>
                 {{else}}
-                  <span class="label label-default">{{moment this.timestamp "YYYY-MM-DD HH:mm:ss"}}</span>
+                  {{#if this.delay}}
+                    {{#if this.options.timestamp}}
+                      <span class="label label-default">{{moment (plus this.options.timestamp this.delay) "YYYY-MM-DD HH:mm:ss"}}</span>
+                    {{else}}
+                      <span class="label label-default">{{moment (plus this.timestamp this.delay) "YYYY-MM-DD HH:mm:ss"}}</span>
+                    {{/if}}
+                  {{else}}
+                    <span class="label label-default">{{moment this.timestamp "YYYY-MM-DD HH:mm:ss"}}</span>
+                  {{/if}}
                 {{/if}}
                 {{#if this.duration}}
                   <span class="label label-default">Duration: {{moment this.duration "HH:mm:ss.SSS"}}</span>

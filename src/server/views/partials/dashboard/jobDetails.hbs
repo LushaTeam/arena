@@ -30,6 +30,22 @@
   </div>
 
   <div class="col-sm-3">
+    {{#if this.duration}}
+      <h5>Duration</h5>
+      {{moment this.duration "HH:mm:ss.SSS"}}
+    {{else}}
+      {{#if this.delay}}
+        <h5>Execute At</h5>
+        {{#if this.options.timestamp}}
+          {{moment (plus this.options.timestamp this.delay) "llll"}}
+        {{else}}
+          {{moment (plus this.timestamp this.delay) "llll"}}
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  </div>
+
+  <div class="col-sm-3">
     <h5>Attempts Made</h5>
     {{this.attemptsMade}}
 
@@ -37,13 +53,6 @@
       {{length this.options.stacktraces}}
     {{/if}}
   </div>
-
-  {{#if this.duration}}
-    <div class="col-sm-3">
-      <h5>Duration</h5>
-      {{moment this.duration "HH:mm:ss.SSS"}}
-    </div>
-  {{/if}}
 </div>
 <div class="row">
   <div class="col-sm-12">
