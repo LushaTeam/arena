@@ -52,11 +52,13 @@ async function handler(req, res) {
     }
 
     for (const job of failed) {
-      if (job.finishedOn > yesterday) {
+      const lastTimestamp = job.finishedOn || job.processedOn;
+
+      if (lastTimestamp > yesterday) {
         q.failedLastDayCount++;
         failedLastDayCount++;
 
-        if (job.finishedOn > hourAgo) {
+        if (lastTimestamp > hourAgo) {
           q.failedLastHourCount++;
           failedLastHourCount++;
         }
