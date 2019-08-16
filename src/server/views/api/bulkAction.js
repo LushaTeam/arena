@@ -24,8 +24,17 @@ function bulkAction(action) {
         const jobsPromises = jobs.map((id) => queue.getJob(decodeURIComponent(id)));
         const fetchedJobs = await Promise.all(jobsPromises);
 
-        const actionPromises = fetchedJobs.map(job => job[action]());
-        await Promise.all(actionPromises);
+        for (const job of fetchedJobs) {
+          const state = await job.getState();
+
+          if (action === 'remove' && state === 'active') {
+            await job.discard();
+            await job.moveToFailed({ message: 'Aborted by user' }, true);
+          } else {
+            await job[action]();
+          }
+        }
+
         return res.sendStatus(200);
       }
     } catch(e) {
