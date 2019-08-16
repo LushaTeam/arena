@@ -28,7 +28,6 @@ function bulkAction(action) {
           const state = await job.getState();
 
           if (action === 'remove' && state === 'active') {
-            await job.discard();
             await job.moveToFailed({ message: 'Aborted by user' }, true);
           } else {
             await job[action]();

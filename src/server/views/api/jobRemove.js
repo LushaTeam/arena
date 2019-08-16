@@ -12,7 +12,6 @@ async function handler(req, res) {
     const state = await job.getState();
 
     if (state === 'active') {
-      await job.discard();
       await job.moveToFailed({ message: 'Aborted by user' }, true);
     } else {
       await job.remove();
