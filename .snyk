@@ -5,8 +5,12 @@ ignore:
   SNYK-JS-AUTOLINKER-73494:
     - handlebars-helpers > helper-markdown > remarkable > autolinker:
         reason: None given
-        expires: '2019-12-27T14:06:55.000Z'
+        expires: '2020-03-27T13:06:28.453Z'
     - handlebars-helpers > helper-md > remarkable > autolinker:
         reason: None given
-        expires: '2019-12-27T14:06:55.000Z'
+        expires: '2020-03-27T13:06:28.453Z'
+  SNYK-JS-DOTPROP-543489:
+    - nodemon > update-notifier > configstore > dot-prop:
+        reason: None given
+        expires: '2020-03-27T13:06:28.453Z'
 patch: {}
