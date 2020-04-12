@@ -5,12 +5,29 @@ ignore:
   SNYK-JS-AUTOLINKER-73494:
     - handlebars-helpers > helper-markdown > remarkable > autolinker:
         reason: None given
-        expires: '2020-03-27T13:06:28.453Z'
+        expires: '2020-05-12T14:16:39.067Z'
     - handlebars-helpers > helper-md > remarkable > autolinker:
         reason: None given
-        expires: '2020-03-27T13:06:28.453Z'
+        expires: '2020-05-12T14:16:39.067Z'
   SNYK-JS-DOTPROP-543489:
     - nodemon > update-notifier > configstore > dot-prop:
         reason: None given
         expires: '2020-03-27T13:06:28.453Z'
+  SNYK-JS-AUTOLINKER-564438:
+    - handlebars-helpers > helper-markdown > remarkable > autolinker:
+        reason: None given
+        expires: '2020-05-12T14:16:39.067Z'
+    - handlebars-helpers > helper-md > remarkable > autolinker:
+        reason: None given
+        expires: '2020-05-12T14:16:39.067Z'
+  SNYK-JS-MINIMIST-559764:
+    - handlebars > optimist > minimist:
+        reason: None given
+        expires: '2020-05-12T14:16:39.067Z'
+    - express-handlebars > handlebars > optimist > minimist:
+        reason: None given
+        expires: '2020-05-12T14:16:39.067Z'
+    - handlebars-helpers > handlebars > optimist > minimist:
+        reason: None given
+        expires: '2020-05-12T14:16:39.067Z'
 patch: {}
